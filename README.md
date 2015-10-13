@@ -1,0 +1,2 @@
+# dfa
+Detrended Fluctuation Analysis
