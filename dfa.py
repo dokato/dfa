@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 
 def calc_rms(x, scale):
     shape = (x.shape[0]//scale, scale)
-    print shape 
     X = np.lib.stride_tricks.as_strided(x,shape=shape)
     scale_ax = np.arange(scale)
     rms = np.zeros(X.shape[0])
@@ -25,10 +24,11 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
     if show:
         fluctfit = 2**np.polyval(coeff,np.log2(scales))
         plt.loglog(scales, fluct, 'bo')
-        plt.loglog(scales, fluctfit, 'r', label='$\alpha$ = %0.2f'%coeff[0])
+        plt.loglog(scales, fluctfit, 'r', label=r'$\alpha$ = %0.2f'%coeff[0])
         plt.title('DFA')
-        plt.xlabel('$log_{10}$(time window)')
-        plt.ylabel('$log_{10}$<F(t)>')
+        plt.xlabel(r'$\log_{10}$(time window)')
+        plt.ylabel(r'$\log_{10}$<F(t)>')
+        plt.legend()
         plt.show()
     return scales, fluct, coeff[0]
 
