@@ -4,6 +4,20 @@ import matplotlib.pyplot as plt
 # detrended fluctuation analysis
 
 def calc_rms(x, scale):
+    """
+    Root Mean Square in windows with linear detrending.
+    
+    Args:
+    -----
+      *x* : numpy.array
+        one dimensional data vector
+      *scale* : int
+        length of the window in which RMS will be calculaed
+    Returns:
+    --------
+      *rms* : numpy.array
+        RMS data in each window with length len(x)//scale
+    """
     shape = (x.shape[0]//scale, scale)
     X = np.lib.stride_tricks.as_strided(x,shape=shape)
     scale_ax = np.arange(scale)
@@ -15,6 +29,33 @@ def calc_rms(x, scale):
     return rms
 
 def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
+    """
+    Detrended Fluctuation Analysis.
+    More details about algorithm can be found e.g. here:
+    Hardstone, R. et al. Detrended fluctuation analysis: A scale-free 
+    view on neuronal oscillations, (2012).
+    
+    Args:
+    -----
+      *x* : numpy.array
+        one dimensional data vector
+      *scale_lim* = [5,9] : list of lenght 2 
+        boundaries of the scale where scale means windows in which RMS
+        is calculated. Numbers from list are indexes of 2 to the power
+        of range.
+      *scale_dens* = 0.25 : float
+        density of scale divisions
+      *show* = False
+        if True it shows matplotlib picture
+    Returns:
+    --------
+      *scales* : numpy.array
+        vector of scales
+      *fluct* : numpy.array
+        fluctuation function
+      *alpha* : float
+        DFA exponent
+    """
     y = np.cumsum(x - np.mean(x))
     scales = (2**np.arange(scale_lim[0], scale_lim[1], scale_dens)).astype(np.int)
     fluct = np.zeros(len(scales))
@@ -34,5 +75,9 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
 
 
 if __name__=='__main__':
-    x = np.random.randn(1000)
-    print dfa(x, show=1)
+    n = 1000
+    x = np.random.randn(n)
+    scales, fluct, alpha = dfa(x, show=1)
+    print scales
+    print fluct
+    print "DFA exponent: {}".format(alpha)
