@@ -57,7 +57,6 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
       *alpha* : float
         DFA exponent
     """
-    x = np.abs(ss.hilbert(x))
     y = np.cumsum(x - np.mean(x))
     scales = (2**np.arange(scale_lim[0], scale_lim[1], scale_dens)).astype(np.int)
     fluct = np.zeros(len(scales))
@@ -79,6 +78,7 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
 if __name__=='__main__':
     n = 1000
     x = np.random.randn(n)
+    x = np.abs(ss.hilbert(x))
     scales, fluct, alpha = dfa(x, show=1)
     print scales
     print fluct
