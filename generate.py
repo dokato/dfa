@@ -5,10 +5,23 @@ from dfa import dfa
 
 def power_law_noise(n, alpha, var=1):
     '''
-    
+        
+    Args:
+    -----
+      *n* : int
+        number of data points
+      *alpha* : float
+        DFA exponent
+      *var* = 1 : float
+        variance
+    Returns:
+    --------
+      *x* : numpy.array
+        generated noisy data with exponent *alpha*
+
     Based on:
-    N. Jeremy Kasdin, Discrete simulation of power law noise (for oscillator stability evaluation)
-    Supporitng with a Matlab code: https://people.sc.fsu.edu/~jburkardt/m_src/cnoise/cnoise.html
+    N. Jeremy Kasdin, Discrete simulation of power law noise (for
+    oscillator stability evaluation)
     '''
     # computing standard deviation from variance
     stdev = np.sqrt(np.abs(var))
