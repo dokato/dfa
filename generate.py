@@ -5,7 +5,8 @@ from dfa import dfa
 
 def power_law_noise(n, alpha, var=1):
     '''
-        
+    Generale power law noise. 
+    
     Args:
     -----
       *n* : int
