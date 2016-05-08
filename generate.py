@@ -53,19 +53,20 @@ def power_law_noise(n, alpha, var=1):
     
     return np.real(x[:n])
 
-x1 = power_law_noise(2**12, 0.5)
-x2 = power_law_noise(2**12, 0.8)
-x3 = power_law_noise(2**12, 1.2)
+if __name__=='__main__':
+    x1 = power_law_noise(2**12, 0.5)
+    x2 = power_law_noise(2**12, 0.8)
+    x3 = power_law_noise(2**12, 1.2)
 
-plt.subplot(311)
-plt.plot(x1)
-plt.subplot(312)
-plt.plot(x2)
-plt.subplot(313)
-plt.plot(x3)
+    plt.subplot(311)
+    plt.plot(x1)
+    plt.subplot(312)
+    plt.plot(x2)
+    plt.subplot(313)
+    plt.plot(x3)
 
-plt.show()
+    plt.show()
 
-for e,xx in enumerate([x1,x2,x3]): 
-    scales, fluct, alpha = dfa(xx)
-    print "DFA exponent {}: {}".format(e+1, alpha)
+    for e,xx in enumerate([x1,x2,x3]): 
+        scales, fluct, alpha = dfa(xx)
+        print "DFA exponent {}: {}".format(e+1, alpha)
