@@ -9,12 +9,12 @@ It bases on these two articles:
 
 You may test it using power law data generator from `generate.py`, or using code below:
 
-```
+```python
 from dfa import dfa
 from generate import power_law_noise
 
 x = power_law_noise(2**12, 0.8)
-scales, fluct, alpha = dfa(xx)
+scales, fluct, alpha = dfa(x)
 print("DFA exponent {}: {}".format(e+1, alpha))
 
 ```
