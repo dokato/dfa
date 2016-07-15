@@ -1,3 +1,5 @@
+# author: Dominik Krzeminski (dokato)
+
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.signal as ss
