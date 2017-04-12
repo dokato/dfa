@@ -13,9 +13,11 @@ You may test it using power law data generator from `generate.py`, or using code
 from dfa import dfa
 from generate import power_law_noise
 
-x = power_law_noise(2**12, 0.8)
+true_exp = 0.8
+x = power_law_noise(2**12, true_exp)
 scales, fluct, alpha = dfa(x)
-print("DFA exponent {}: {}".format(e+1, alpha))
+print("True scaling exponent: {}".format(true_exp))
+print("Estimated DFA exponent: {}".format(alpha))
 
 ```
 
