@@ -36,12 +36,13 @@ def calc_rms(x, scale):
 
 def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
     """
-    Detrended Fluctuation Analysis - algorithm with measures power law
-    scaling of the given signal *x*.
+    Detrended Fluctuation Analysis - measures power law scaling coefficient
+    of the given signal *x*.
+
     More details about algorithm can be found e.g. here:
     Hardstone, R. et al. Detrended fluctuation analysis: A scale-free 
     view on neuronal oscillations, (2012).
-    
+
     Args:
     -----
       *x* : numpy.array
