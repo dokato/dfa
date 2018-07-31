@@ -8,7 +8,7 @@ import scipy.signal as ss
 
 def calc_rms(x, scale):
     """
-    Root Mean Square in windows with linear detrending.
+    windowed Root Mean Square (RMS) with linear detrending.
     
     Args:
     -----
@@ -39,7 +39,7 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
     Detrended Fluctuation Analysis - measures power law scaling coefficient
     of the given signal *x*.
 
-    More details about algorithm can be found e.g. here:
+    More details about the algorithm you can find e.g. here:
     Hardstone, R. et al. Detrended fluctuation analysis: A scale-free 
     view on neuronal oscillations, (2012).
 
@@ -48,11 +48,11 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
       *x* : numpy.array
         one dimensional data vector
       *scale_lim* = [5,9] : list of lenght 2 
-        boundaries of the scale where scale means windows in which RMS
+        boundaries of the scale, where scale means windows among which RMS
         is calculated. Numbers from list are indexes of 2 to the power
-        of range.
+        of, eg. [5,9] is in fact [2**5, 2**9]
       *scale_dens* = 0.25 : float
-        density of scale divisions
+        density of scale divisions, eg. for 0.25 we get 2**[5, 5.25, 5.5, ... ] 
       *show* = False
         if True it shows matplotlib picture
     Returns:
