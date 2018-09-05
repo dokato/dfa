@@ -91,6 +91,6 @@ if __name__=='__main__':
     # computing DFA of signal envelope
     x = np.abs(ss.hilbert(x))
     scales, fluct, alpha = dfa(x, show=1)
-    print scales
-    print fluct
-    print "DFA exponent: {}".format(alpha)
+    print(scales)
+    print(fluct)
+    print("DFA exponent: {}".format(alpha))
