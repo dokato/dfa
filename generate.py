@@ -71,4 +71,4 @@ if __name__=='__main__':
 
     for e,xx in enumerate([x1,x2,x3]): 
         scales, fluct, alpha = dfa(xx)
-        print "DFA exponent {}: {}".format(e+1, alpha)
+        print("DFA exponent {}: {}".format(e+1, alpha))
