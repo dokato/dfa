@@ -47,22 +47,25 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
     -----
       *x* : numpy.array
         one dimensional data vector
-      *scale_lim* = [5,9] : list of lenght 2 
+      *scale_lim* = [5,9] : list of length 2 
         boundaries of the scale, where scale means windows among which RMS
-        is calculated. Numbers from list are indexes of 2 to the power
-        of, eg. [5,9] is in fact [2**5, 2**9]
+        is calculated. Numbers from list are exponents of 2 to the power
+        of X, eg. [5,9] is in fact [2**5, 2**9].
+        You can think of it that if your signal is sampled with F_s = 128 Hz,
+        then the lowest considered scale would be 2**5/128 = 32/128 = 0.25,
+        so 250 ms.
       *scale_dens* = 0.25 : float
         density of scale divisions, eg. for 0.25 we get 2**[5, 5.25, 5.5, ... ] 
       *show* = False
-        if True it shows matplotlib picture
+        if True it shows matplotlib log-log plot.
     Returns:
     --------
       *scales* : numpy.array
-        vector of scales
+        vector of scales (x axis)
       *fluct* : numpy.array
-        fluctuation function
+        fluctuation function values (y axis)
       *alpha* : float
-        DFA exponent
+        estimation of DFA exponent
     """
     # cumulative sum of data with substracted offset
     y = np.cumsum(x - np.mean(x))
