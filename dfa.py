@@ -73,7 +73,7 @@ def dfa(x, scale_lim=[5,9], scale_dens=0.25, show=False):
     fluct = np.zeros(len(scales))
     # computing RMS for each window
     for e, sc in enumerate(scales):
-        fluct[e] = np.mean(np.sqrt(calc_rms(y, sc)**2))
+        fluct[e] = np.sqrt(np.mean(calc_rms(y, sc)**2))
     # fitting a line to rms data
     coeff = np.polyfit(np.log2(scales), np.log2(fluct), 1)
     if show:
